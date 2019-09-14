@@ -7,12 +7,23 @@
     validate :is_clickbait?
 
     def is_clickbait?
-        if self.title 
-            if self.title.include?("Won't Believe") || self.title.include?("Secret") || self.title.include?("Guess") || self.title.include?("Top[number]") 
+        if self.title && self.title.include?("Won't Believe")
                 true  
-            else 
+         else 
                 errors.add(:title, "Not Clickbait")
-            end  
-        end 
+      end  
     end 
+
+    # CLICKBAIT_PATTERNS = [
+    #     /Won't Believe/i,
+    #     /Secret/i,
+    #     /Top [0-9]*/i,
+    #     /Guess/i
+    #   ]
+    
+    #   def is_clickbait?
+    #     if CLICKBAIT_PATTERNS.none? { |pat| pat.match title }
+    #       errors.add(:title, "must be clickbait")
+    #     end
+    #   end
 end
