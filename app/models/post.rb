@@ -7,9 +7,9 @@ class Post < ActiveRecord::Base
     validate :clickbait? 
 
     CLICKBAIT_PATTERNS = [
-        /Won't Believe/i,
+        /Won't Believe/i, #i = ignore case in a given string
         /Secret/i,
-        /Top [0-9]*/i,
+        /Top [0-9]*/i, #* checks for any occurences of preceding char. 
         /Guess/i
       ]
 
