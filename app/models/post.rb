@@ -6,10 +6,8 @@ class Post < ActiveRecord::Base
     validate :clickbate
 
     def clickbate
-        if self.title.include?("Won't Believe" || "Secret" || "Top[number]" || "Guess") 
-            true
-        else 
-            false
+        unless self.title&.include?("Won't Believe" || "Secret" || "Guess") || self.title&.match(/Top\s\d+/)
+            errors.add(:post, "Your post is invalid.")
         end  
     end
 
