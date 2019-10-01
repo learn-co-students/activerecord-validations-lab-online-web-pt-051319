@@ -3,10 +3,10 @@ class Post < ActiveRecord::Base
     validates :content, length: { minimum: 250 }
     validates :summary, length: { maximum: 250 }
     validates :category, inclusion: { in: %w(Fiction NonFiction)}
-    # validate :clickbate
+    validate :clickbate
 
     def clickbate
-        if Post.title.include?("Won't Believe" || "Secret" || "Top[number]" || "Guess") 
+        if self.title.include?("Won't Believe" || "Secret" || "Top[number]" || "Guess") 
             true
         else 
             false
